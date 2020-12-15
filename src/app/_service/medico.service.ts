@@ -16,7 +16,7 @@ export class MedicoService extends GenericService<Medico>{
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/${environment.MICRO_CRUD}/medicos`
+      `${environment.HOST}/medicos`
     );
   }
 

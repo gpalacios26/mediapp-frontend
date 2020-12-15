@@ -15,7 +15,7 @@ export class ConsultaService extends GenericService<Consulta>{
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/${environment.MICRO_CR}/consultas`
+      `${environment.HOST}/consultas`
     )
   }
 
@@ -32,7 +32,7 @@ export class ConsultaService extends GenericService<Consulta>{
   }
 
   listarExamenPorConsulta(idConsulta: number) {
-    return this.http.get<ConsultaListaExamenDTO[]>(`${environment.HOST}/${environment.MICRO_CR}/consultaexamenes/${idConsulta}`);
+    return this.http.get<ConsultaListaExamenDTO[]>(`${environment.HOST}/consultaexamenes/${idConsulta}`);
   }
 
   listarResumen() {

@@ -12,7 +12,7 @@ export class LoginService {
 
   
 
-  private url: string = `${environment.HOST}/${environment.MICRO_AUTH}/oauth/token`
+  private url: string = `${environment.HOST}/oauth/token`
 
   constructor(
     private http: HttpClient,
@@ -37,7 +37,7 @@ export class LoginService {
     let token = sessionStorage.getItem(environment.TOKEN_NAME);
 
     if(token){
-      this.http.get(`${environment.HOST}/${environment.MICRO_CR}/tokens/anular/${token}`).subscribe(() => {
+      this.http.get(`${environment.HOST}/tokens/anular/${token}`).subscribe(() => {
         sessionStorage.clear();
         this.router.navigate(['login']);
       });
@@ -48,17 +48,17 @@ export class LoginService {
   }
 
   enviarCorreo(correo: string){
-    return this.http.post<number>(`${environment.HOST}/${environment.MICRO_CR}/login/enviarCorreo`, correo, {
+    return this.http.post<number>(`${environment.HOST}/login/enviarCorreo`, correo, {
       headers: new HttpHeaders().set('Content-Type', 'text/plain')
     });
   }
 
   verificarTokenReset(token: string) {  
-    return this.http.get<number>(`${environment.HOST}/${environment.MICRO_CR}/login/restablecer/verificar/${token}`);
+    return this.http.get<number>(`${environment.HOST}/login/restablecer/verificar/${token}`);
   }
 
   restablecer(token: string, clave: string) {
-    return this.http.post(`${environment.HOST}/${environment.MICRO_CR}/login/restablecer/${token}`, clave, {
+    return this.http.post(`${environment.HOST}/login/restablecer/${token}`, clave, {
       headers: new HttpHeaders().set('Content-Type', 'text/plain')
     });
   }

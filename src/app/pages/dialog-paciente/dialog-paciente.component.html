@@ -1,0 +1,35 @@
+<h2 style="text-align:center;font-size:2em" mat-dialog-title>
+    {{data.titulo}}
+</h2>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput type="text" minlength="3" placeholder="Nombres" required [(ngModel)]="paciente.nombres" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" minlength="3" placeholder="Apellidos" required [(ngModel)]="paciente.apellidos" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number" placeholder="DNI" required [(ngModel)]="paciente.dni" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number" placeholder="Teléfono" required [(ngModel)]="paciente.telefono" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Direccion" required [(ngModel)]="paciente.direccion" autocomplete="off">
+    </mat-form-field>
+</div>
+<div style="float:right;margin:20px;">
+    <button mat-raised-button color="primary" type="button" [mat-dialog-close]="paciente">
+        <mat-icon>done</mat-icon>
+        <span>Aceptar</span>
+    </button>
+
+    <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false" style="margin-left:10px;">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+</div>

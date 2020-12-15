@@ -45,7 +45,7 @@ export class GuardService implements CanActivate {
             }
           }
 
-          if (cont > 0) {
+          if (cont > 0 || url == '/perfil') {
             return true;
           } else {
             this.router.navigate(['not-403']);

@@ -1,0 +1,51 @@
+<mat-toolbar>{{titulo}}</mat-toolbar>
+
+<div class="container-app">
+    <form autocomplete="off" #signoForm="ngForm" [formGroup]="form" (ngSubmit)="guardar()"
+        *ngIf="edicion == false || signo">
+        <input type="hidden" formControlName="idSigno">
+
+        <div style="width: 80%;float: left;">
+            <mat-form-field formGroupName="paciente">
+                <mat-select formControlName="idPaciente" placeholder="Paciente">
+                    <mat-option *ngFor="let paciente of pacientes" value={{paciente.idPaciente}}>
+                        {{paciente.nombres + ' ' + paciente.apellidos}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div style="width: 20%;float: left;">
+            <button mat-raised-button color="primary" type="button" style="margin-left: 20px;" (click)="agregarPaciente()">
+                <span>Agregar Paciente</span>
+            </button>
+        </div>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" [max]="maxFecha" formControlName="fecha" placeholder="Fecha"
+                readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" formControlName="temperatura" placeholder="Temperatura">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" formControlName="pulso" placeholder="Pulso">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" formControlName="ritmo" placeholder="Ritmo Respiratorio">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="signoForm.invalid">
+            <mat-icon>done</mat-icon>
+            <span>Aceptar</span>
+        </button>
+
+        <button mat-raised-button color="warn" type="button" [routerLink]="['/signos']" style="margin-left:10px;">
+            <mat-icon>close</mat-icon>
+            <span>Cancelar</span>
+        </button>
+    </form>
+</div>

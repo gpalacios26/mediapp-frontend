@@ -16,7 +16,10 @@ import { Not403Component } from './pages/not403/not403.component';
 import { Not404Component } from './pages/not404/not404.component';
 import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paciente-edicion.component';
 import { PacienteComponent } from './pages/paciente/paciente.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
+import { SignoFormComponent } from './pages/signos/signo-form/signo-form.component';
+import { SignosComponent } from './pages/signos/signos.component';
 import { GuardService } from './_service/guard.service';
 
 const routes: Routes = [
@@ -49,6 +52,10 @@ const routes: Routes = [
   { path: 'consulta-especial', component: ConsultaEspecialComponent, canActivate: [GuardService] },
   { path: 'buscar', component: BuscarComponent, canActivate: [GuardService] },
   { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
+  { path: 'perfil', component: PerfilComponent, canActivate: [GuardService] },
+  { path: 'signos', component: SignosComponent, canActivate: [GuardService] },
+  { path: 'signos/nuevo', component: SignoFormComponent, canActivate: [GuardService] },
+  { path: 'signos/edicion/:id', component: SignoFormComponent, canActivate: [GuardService] },
   { path: 'not-403', component: Not403Component },
   { path: 'not-404', component: Not404Component },
   { path: 'login', component: LoginComponent },
@@ -57,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -15,7 +15,7 @@ export class MenuService extends GenericService<Menu>{
   constructor(http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/${environment.MICRO_CR}/menus`);
+      `${environment.HOST}/menus`);
   }
 
   listarPorUsuario(nombre: string) {

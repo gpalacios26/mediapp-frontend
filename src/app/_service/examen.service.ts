@@ -16,7 +16,7 @@ export class ExamenService extends GenericService<Examen>{
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/${environment.MICRO_CRUD}/examenes`);
+      `${environment.HOST}/examenes`);
   }
 
    //get Subjects

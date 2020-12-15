@@ -2,35 +2,33 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Especialidad } from '../_model/especialidad';
+import { Signos } from '../_model/signos';
 import { GenericService } from './generic.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EspecialidadService extends GenericService<Especialidad>{
+export class SignosService extends GenericService<Signos>{
 
-  private especialidadCambio = new Subject<Especialidad[]>();
+  private signosCambio = new Subject<Signos[]>();
   private mensajeCambio = new Subject<string>();
 
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/especialidades`);
+      `${environment.HOST}/signos`);
   }
 
-  //get Subjects
-  getEspecialidadCambio() {
-    return this.especialidadCambio.asObservable();
+  getSignosCambio() {
+    return this.signosCambio.asObservable();
   }
 
   getMensajeCambio() {
     return this.mensajeCambio.asObservable();
   }
 
-  //set Subjects
-  setEspecialidadCambio(especialdades: Especialidad[]) {
-    this.especialidadCambio.next(especialdades);
+  setSignosCambio(signos: Signos[]) {
+    this.signosCambio.next(signos);
   }
 
   setMensajeCambio(mensaje: string) {
